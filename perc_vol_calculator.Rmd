@@ -1,0 +1,28 @@
+---
+title: "Basic formula"
+output: html_notebook
+---
+
+## Alcohol Volume Calculator
+I'll be trying to build a shiny app that documents the number of standard drinks in a tall can.
+Ultimately I'll be planning to make a calculator that incorporates any products from the LCBO API,
+So it should give a direct link up.
+
+### basic formula for calulating tall can alcohol volume.
+
+
+```{r}
+
+
+perc_vol <- function(percent, volume) {
+  std_drink <- .05 * 341
+  num_drinks <- percent/100*volume/std_drink
+  num_drinks
+}
+
+drink_table <- data.frame(percent = c(6, 7, 4, 6.5), volume = rep(500, 4))
+
+drink_table$std_drinks <- perc_vol(drink_table$percent,drink_table$volume)
+
+
+```
